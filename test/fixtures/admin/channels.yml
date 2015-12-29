@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pid: 1
+  title: MyString
+  url: MyString
+  sort: 1
+  status: 1
+  target: 1
+
+two:
+  pid: 1
+  title: MyString
+  url: MyString
+  sort: 1
+  status: 1
+  target: 1

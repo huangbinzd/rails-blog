@@ -1,0 +1,33 @@
+<h1>Listing channels</h1>
+
+<table>
+  <tr>
+    <th>Pid</th>
+    <th>Title</th>
+    <th>Url</th>
+    <th>Sort</th>
+    <th>Status</th>
+    <th>Target</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @channels.each do |channel| %>
+  <tr>
+    <td><%= channel.pid %></td>
+    <td><%= channel.title %></td>
+    <td><%= channel.url %></td>
+    <td><%= channel.sort %></td>
+    <td><%= channel.status %></td>
+    <td><%= channel.target %></td>
+    <td><%= link_to 'Show', admin_channel_path(channel) %></td>
+    <td><%= link_to 'Edit', edit_admin_channel_path(channel) %></td>
+    <td><%= link_to 'Destroy', admin_channel_path(channel), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Channel', new_admin_channel_path %>

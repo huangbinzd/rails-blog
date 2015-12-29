@@ -11,31 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151222061713) do
+ActiveRecord::Schema.define(:version => 20151229070555) do
 
-  create_table "articles", :force => true do |t|
+  create_table "channels", :force => true do |t|
+    t.integer  "pid"
     t.string   "title"
-    t.text     "content"
-    t.integer  "user_id"
+    t.string   "url"
+    t.integer  "sort"
+    t.integer  "status"
+    t.integer  "target"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "blogs", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.date     "birthday"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "phone"
   end
 
 end

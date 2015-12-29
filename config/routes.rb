@@ -1,13 +1,8 @@
 RailsBlog::Application.routes.draw do
-
   namespace :admin do
     root :to => 'index#index'
+    resources :channels
   end
-
-  resources :blogs
-
-  resources :users
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
