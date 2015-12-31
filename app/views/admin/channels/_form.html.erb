@@ -1,3 +1,4 @@
+
 <%= form_for @channel ,:url => @url do |f| %>
   <% if @channel.errors.any? %>
     <div id="error_explanation">
@@ -10,14 +11,15 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :pid %><br />
-    <%= f.number_field :pid %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="am-g am-margin-top">
+    <div class="am-u-sm-4 am-u-md-2 am-text-right">导航标题</div>
+    <div class="am-u-sm-8 am-u-md-10">
+      <div class="am-form am-form-inline">
+        <div class="am-form-group am-form-icon">
+          <%= f.text_field :title, :class => "am-form-field am-input-sm" %>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="field">
     <%= f.label :url %><br />

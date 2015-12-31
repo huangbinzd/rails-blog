@@ -1,33 +1,64 @@
-<h1>Listing channels</h1>
-
-<table>
-  <tr>
-    <th>Pid</th>
-    <th>Title</th>
-    <th>Url</th>
-    <th>Sort</th>
-    <th>Status</th>
-    <th>Target</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @channels.each do |channel| %>
-  <tr>
-    <td><%= channel.pid %></td>
-    <td><%= channel.title %></td>
-    <td><%= channel.url %></td>
-    <td><%= channel.sort %></td>
-    <td><%= channel.status %></td>
-    <td><%= channel.target %></td>
-    <td><%= link_to 'Show', admin_channel_path(channel) %></td>
-    <td><%= link_to 'Edit', edit_admin_channel_path(channel) %></td>
-    <td><%= link_to 'Destroy', admin_channel_path(channel), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Channel', new_admin_channel_path %>
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">导航管理</strong> / <small>Channle</small></div>
+</div>
+<div class="am-g">
+    <div class="am-u-sm-12 am-u-md-6">
+        <div class="am-btn-toolbar">
+          <div class="am-btn-group am-btn-group-xs">
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> <%= link_to '新增', new_admin_channel_path %></button>
+            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+          </div>
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-3">
+        <div class="am-form-group">
+          <select data-am-selected="{btnSize: 'sm'}">
+            <option value="option1">ID</option>
+            <option value="option2">导航名称</option>
+            <option value="option3">导航地址</option>
+            <option value="option3">排序</option>
+            <option value="option3">操作</option>
+          </select>
+        </div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-3">
+        <div class="am-input-group am-input-group-sm">
+            <input type="text" class="am-form-field">
+            <span class="am-input-group-btn">
+                <button class="am-btn am-btn-default" type="button">搜索</button>
+            </span>
+        </div>
+    </div>
+</div>
+<div class="am-g">
+    <div class="am-u-sm-12">
+        <form class="am-form">
+            <table class="am-table am-table-striped am-table-hover table-main">
+                <thead>
+                  <tr>
+                    <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th><th class="table-title">导航名称</th><th class="table-type">导航地址</th><th class="table-author am-hide-sm-only">排序</th><th class="table-set">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% @channels.each do |channel| %>
+                      <tr>
+                        <td><input type="checkbox" /></td>
+                        <td><%= channel.id %></td>
+                        <td><%= link_to channel.title, admin_channel_path(channel) %></td>
+                        <td><%= channel.url %></td>
+                        <td><%= channel.sort %></td>
+                        <td>
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> <%= link_to '编辑', edit_admin_channel_path(channel) %></button>
+                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> <%= link_to '删除', admin_channel_path(channel), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                                </div>
+                            </div>
+                        </td>
+                      </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
