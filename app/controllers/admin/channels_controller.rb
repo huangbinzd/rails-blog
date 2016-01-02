@@ -2,7 +2,8 @@ class Admin::ChannelsController < AdminController
   # GET /channels
   # GET /channels.json
   def index
-    @channels = Channel.all
+    #@channels = Channel.all
+    @channels = Channel.where({:pid => 0}).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,10 +15,11 @@ class Admin::ChannelsController < AdminController
   # GET /channels/1.json
   def show
     @channel = Channel.find(params[:id])
+    @channels = Channel.where(:pid => params[:id]).page params[:page]
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @channel }
+      format.json { render json: @channels }
     end
   end
 
@@ -30,6 +32,11 @@ class Admin::ChannelsController < AdminController
       format.html # new.html.erb
       format.json { render json: @channel }
     end
+  end
+
+  def new_by_pid
+    @pid = params[:pid]
+    new
   end
 
   # GET /channels/1/edit
@@ -49,6 +56,7 @@ class Admin::ChannelsController < AdminController
         format.json { render json: @channel, status: :created, location: @channel }
       else
         format.html { render action: "new" }
+        @url = admin_channels_url
         format.json { render json: @channel.errors, status: :unprocessable_entity }
       end
     end

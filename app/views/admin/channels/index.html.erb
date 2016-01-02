@@ -30,35 +30,4 @@
         </div>
     </div>
 </div>
-<div class="am-g">
-    <div class="am-u-sm-12">
-        <form class="am-form">
-            <table class="am-table am-table-striped am-table-hover table-main">
-                <thead>
-                  <tr>
-                    <th class="table-check"><input type="checkbox" /></th><th class="table-id">ID</th><th class="table-title">导航名称</th><th class="table-type">导航地址</th><th class="table-author am-hide-sm-only">排序</th><th class="table-set">操作</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    <% @channels.each do |channel| %>
-                      <tr>
-                        <td><input type="checkbox" /></td>
-                        <td><%= channel.id %></td>
-                        <td><%= link_to channel.title, admin_channel_path(channel) %></td>
-                        <td><%= channel.url %></td>
-                        <td><%= channel.sort %></td>
-                        <td>
-                            <div class="am-btn-toolbar">
-                                <div class="am-btn-group am-btn-group-xs">
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> <%= link_to '编辑', edit_admin_channel_path(channel) %></button>
-                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> <%= link_to '删除', admin_channel_path(channel), method: :delete, data: { confirm: 'Are you sure?' } %></button>
-                                </div>
-                            </div>
-                        </td>
-                      </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </form>
-    </div>
-</div>
+<%= render 'channel_table' %>

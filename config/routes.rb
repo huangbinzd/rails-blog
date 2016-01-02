@@ -2,6 +2,7 @@ RailsBlog::Application.routes.draw do
   namespace :admin do
     root :to => 'index#index'
     resources :channels
+    get 'channels/add/:pid', :to => 'channels#new_by_pid', :as => "channels_new_by_pid"
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

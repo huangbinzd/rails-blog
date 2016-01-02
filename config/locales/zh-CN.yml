@@ -1,0 +1,13 @@
+
+zh-CN:
+  views:
+    pagination:
+      first: "&laquo; 首页" 
+      last: "末页 &raquo;"
+      previous: "&lsaquo; 上一页"
+      next: "下一页 &rsaquo;"
+  activerecord:
+    attributes:
+      channel:
+        title: "导航标题"
+        url: "导航链接"
